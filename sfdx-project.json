@@ -2,19 +2,17 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true,
       "package": "TopicsApp",
       "versionName": "ver 0.1",
-      "versionNumber": "1.1.0.NEXT",
-      "versionDescription": "",
-      "ancestorVersion": "HIGHEST"
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": ""
     }
   ],
   "name": "Topics",
-  "namespace": "innovations_hub",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "58.0",
   "packageAliases": {
-    "TopicsApp": "0HoHo0000008OSvKAM"
+    "TopicsApp": "0HoHo0000008OTFKA2"
   }
 }
