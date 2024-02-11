@@ -134,14 +134,14 @@ export default class TopicCardComponent extends NavigationMixin(LightningElement
 
     setCategoryOptions(data) {
         const categoryOptionsFromConfig = data.map(config => ({ 
-            label: config.innovations_hub__Category__c, value: config.innovations_hub__Category__c 
+            label: config.Category__c, value: config.Category__c 
         }));
         this.categoryOptions = [...this.categoryOptions, ...categoryOptionsFromConfig];
     }
 
     setTopicConfigurations(data) {
         this.topicConfigurations = data.reduce((configurations, config) => {
-            configurations[config.innovations_hub__Category__c] = config; 
+            configurations[config.Category__c] = config; 
             return configurations;
         }, {});
     }
@@ -158,8 +158,8 @@ export default class TopicCardComponent extends NavigationMixin(LightningElement
         const allData = JSON.parse(data);
         this.selectedTopics = allData.reduce((result, row) => {
             console.log(JSON.stringify(row));
-            row.sObj.Name = row.sObj.innovations_hub__Topic__r.Name;
-            row.class = this.getPillClass(row.sObj?.innovations_hub__Topic__r?.innovations_hub__Category__c);
+            row.sObj.Name = row.sObj.Topic__r.Name;
+            row.class = this.getPillClass(row.sObj?.Topic__r?.Category__c);
             result.push({...row});
             return result;
         }, []);
@@ -169,8 +169,8 @@ export default class TopicCardComponent extends NavigationMixin(LightningElement
         let pillClass = 'pill';
         if (this.topicConfigurations){
             const config = this.topicConfigurations[category];
-            let colorClass = config.innovations_hub__Pill_Color__c;
-            let styleClass = config.innovations_hub__Pill_Style__c;
+            let colorClass = config.Pill_Color__c;
+            let styleClass = config.Pill_Style__c;
             return `${pillClass} ${styleClass} ${colorClass}-${styleClass}`;
         } else {
             return pillClass;
@@ -217,13 +217,13 @@ export default class TopicCardComponent extends NavigationMixin(LightningElement
     }
 
     handleRemoveTopic(topicRec) {
-        const removedKey = `${topicRec.sObj.Name}${topicRec.sObj.innovations_hub__Category__c}`;
+        const removedKey = `${topicRec.sObj.Name}${topicRec.sObj.Category__c}`;
         const removedTopic = this.selectedTopics.find(topic => {
-            let key = `${topic.sObj.Name}${topic.sObj.innovations_hub__Topic__r.innovations_hub__Category__c}`
+            let key = `${topic.sObj.Name}${topic.sObj.Topic__r.Category__c}`
             return key === removedKey;
         });
         this.selectedTopics = this.selectedTopics.filter(topic => {
-            let key = `${topic.sObj.Name}${topic.sObj.innovations_hub__Topic__r.innovations_hub__Category__c}`
+            let key = `${topic.sObj.Name}${topic.sObj.Topic__r.Category__c}`
             return key !== removedKey;
         });
         this.deleteTopicJunction(removedTopic.sObj.Id);
@@ -241,7 +241,7 @@ export default class TopicCardComponent extends NavigationMixin(LightningElement
         const nameFieldToRecordMap = this.recordData?.data;
         const nameField = Object.keys(nameFieldToRecordMap)[0];
         const record = Object.values(nameFieldToRecordMap)[0];
-        const objectField = this.topicConfigurations[topic.innovations_hub__Category__c]?.innovations_hub__Object_Field__c;
+        const objectField = this.topicConfigurations[topic.Category__c]?.Object_Field__c;
         const recordName = record != null && nameField != null ? record[nameField] : '';
         const topicJunctionId = `${this.recordId}-${this.objectApiName}-${topic.Id}`;
         const topicJunctionName = `${recordName}-${topic.Name}`;
@@ -289,11 +289,11 @@ export default class TopicCardComponent extends NavigationMixin(LightningElement
         this[NavigationMixin.Navigate]({
             "type": "standard__objectPage",
             "attributes": {
-                "objectApiName": "innovations_hub__Topic__c",
+                "objectApiName": "Topic__c",
                 "actionName": "new"
             },
             "state": {
-                "defaultFieldValues": `Name=${this.value},innovations_hub__Category__c=${category},innovations_hub__Object_Visibility__c=${this.objectApiName}`
+                "defaultFieldValues": `Name=${this.value},Category__c=${category},Object_Visibility__c=${this.objectApiName}`
             }
         });
     }
@@ -302,7 +302,7 @@ export default class TopicCardComponent extends NavigationMixin(LightningElement
         this[NavigationMixin.GenerateUrl]({
             "type": "standard__objectPage",
             "attributes": {
-                "objectApiName": "innovations_hub__Topic__c",
+                "objectApiName": "Topic__c",
                 "actionName": "list"
             },
             "state": {

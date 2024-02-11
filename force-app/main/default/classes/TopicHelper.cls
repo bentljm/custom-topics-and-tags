@@ -99,7 +99,7 @@ public with sharing class TopicHelper {
     @AuraEnabled(cacheable=true)
     public static Map<String, Boolean> getCrudPermissions() {
         // Call getCrudPermissions from TopicPermissionsUtility for Topic object
-        return innovations_hub.TopicPermissionsUtility.getCrudPermissions(TopicConstants.TOPIC_OBJECT);
+        return TopicPermissionsUtility.getCrudPermissions(TopicConstants.TOPIC_OBJECT);
     }
 
     /**
@@ -111,7 +111,7 @@ public with sharing class TopicHelper {
     @AuraEnabled(cacheable=true)
     public static List<Topic_Configuration__mdt> getTopicConfigurations(String objectApiName, String topicCategories) {
         // Call the existing method from TopicQueryUtility
-        return innovations_hub.TopicQueryUtility.getTopicConfigurationsByCategory(objectApiName, topicCategories);
+        return TopicQueryUtility.getTopicConfigurationsByCategory(objectApiName, topicCategories);
     }
 
     /**
@@ -211,7 +211,7 @@ public with sharing class TopicHelper {
         // List to store recently used topics
         List<Topic> recentlyUsedTopics = new List<Topic>();
         // Call the buildAggQuery method to get aggregate results
-        List<AggregateResult> aggResults = innovations_hub.TopicQueryUtility.getAggregatedTopics(topicCategories);
+        List<AggregateResult> aggResults = TopicQueryUtility.getAggregatedTopics(topicCategories);
 
         // Iterate over AggregateResults and build Topic objects
         for (AggregateResult aggResult : aggResults) {
@@ -246,7 +246,7 @@ public with sharing class TopicHelper {
         // Check if the wrapper is valid for retrieval
         if (wrapper != null && wrapper.isRetrieveValid()) {
             // Call the utility method to get topics associated with the record
-            List<Topic_Junction__c> topicJunctions = innovations_hub.TopicQueryUtility.getTopicsRelatedToRecord(wrapper.recordId, wrapper.objectApiName, wrapper.topicCategories);
+            List<Topic_Junction__c> topicJunctions = TopicQueryUtility.getTopicsRelatedToRecord(wrapper.recordId, wrapper.objectApiName, wrapper.topicCategories);
             // Iterate through Topic_Junction__c records and construct Topic objects
             for (Topic_Junction__c topicJunction : topicJunctions) {
                 topics.add(constructTopic(topicJunction, topicJunction.Topic__c, topicJunction.Object_Type__c, topicJunction.Topic__r.Category__c));
@@ -287,8 +287,8 @@ public with sharing class TopicHelper {
         List<SObject> searchResults = performSearch(wrapper);
         // Iterate over the search results and construct Topic records
         for (SObject sObj : searchResults) {
-            String topicId = (String) sObj.get(innovations_hub.TopicConstants.TOPIC_ID_FIELD);
-            String topicCategory = (String) sObj.get(innovations_hub.TopicConstants.TOPIC_CATEGORY_FIELD);
+            String topicId = (String) sObj.get(TopicConstants.TOPIC_ID_FIELD);
+            String topicCategory = (String) sObj.get(TopicConstants.TOPIC_CATEGORY_FIELD);
             // construct Topic
             topics.add(constructTopic(sObj, topicId, wrapper.objectApiName, topicCategory));
         }
@@ -311,11 +311,11 @@ public with sharing class TopicHelper {
             // Build SOSL query
             String soslQuery = 
                 'FIND {' + searchTerm + '} ' +
-                'IN NAME FIELDS RETURNING innovations_hub__Topic__c (Id, Name, innovations_hub__Category__c ' +
+                'IN NAME FIELDS RETURNING Topic__c (Id, Name, Category__c ' +
                 'WHERE Name != null ' +
-                'AND innovations_hub__Active__c = true ' +
-                'AND innovations_hub__Category__c IN :categories ' +
-                'AND innovations_hub__Object_Visibility__c INCLUDES (\''+objectApiName+'\')) ' +
+                'AND Active__c = true ' +
+                'AND Category__c IN :categories ' +
+                'AND Object_Visibility__c INCLUDES (\''+objectApiName+'\')) ' +
                 'WITH USER_MODE ' +
                 'LIMIT 25';
 

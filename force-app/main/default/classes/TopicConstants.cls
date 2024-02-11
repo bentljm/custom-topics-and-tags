@@ -19,7 +19,7 @@ public class TopicConstants {
     };
 
     // Topic Configuration Custom Metadata Type
-    public static final String TOPIC_CONFIG_METADATA_TYPE = 'innovations_hub__Topic_Configuration__mdt';
+    public static final String TOPIC_CONFIG_METADATA_TYPE = 'Topic_Configuration__mdt';
 
     // Topic Configuration Fields
     public static final String TOPIC_CONFIG_LABEL_FIELD = 'Label';
@@ -29,7 +29,7 @@ public class TopicConstants {
     public static final String TOPIC_CONFIG_ICON_NAME_FIELD = 'Icon_Name__c';
 
     // Topic Object
-    public static final String TOPIC_OBJECT = 'innovations_hub__Topic__c';
+    public static final String TOPIC_OBJECT = 'Topic__c';
 
     // Topic Fields
     public static final String TOPIC_ID_FIELD = 'Id';
@@ -41,7 +41,7 @@ public class TopicConstants {
     public static final String TOPIC_ACTIVE_FIELD = 'Active__c';
 
     // Topic Junction Object
-    public static final String TOPIC_JUNCTION_OBJECT = 'innovations_hub__Topic_Junction__c';
+    public static final String TOPIC_JUNCTION_OBJECT = 'Topic_Junction__c';
 
     // Topic Junction Fields
     public static final String TOPIC_JUNCTION_ID_FIELD = 'Id';

@@ -63,7 +63,7 @@ private class TopicHelperTest {
         // Create test records for ObjectPermissions
         List<ObjectPermissions> objectPermissions = new List<ObjectPermissions>();
         objectPermissions.add(new ObjectPermissions(
-            SObjectType = 'innovations_hub__Topic__c',
+            SObjectType = 'Topic__c',
             ParentId = permissionSets[0].Id,
             PermissionsCreate = false,
             PermissionsRead = true,

@@ -20,7 +20,7 @@ private class TopicConstantsTest {
         );
 
         // Test Topic Configuration Custom Metadata Type constant
-        System.assertEquals('innovations_hub__Topic_Configuration__mdt', TopicConstants.TOPIC_CONFIG_METADATA_TYPE);
+        System.assertEquals('Topic_Configuration__mdt', TopicConstants.TOPIC_CONFIG_METADATA_TYPE);
 
         // Test Topic Configuration Fields constants
         System.assertEquals('Label', TopicConstants.TOPIC_CONFIG_LABEL_FIELD);
@@ -30,7 +30,7 @@ private class TopicConstantsTest {
         System.assertEquals('Icon_Name__c', TopicConstants.TOPIC_CONFIG_ICON_NAME_FIELD);
 
         // Test Topic Object constant
-        System.assertEquals('innovations_hub__Topic__c', TopicConstants.TOPIC_OBJECT);
+        System.assertEquals('Topic__c', TopicConstants.TOPIC_OBJECT);
 
         // Test Topic Fields constants
         System.assertEquals('Id', TopicConstants.TOPIC_ID_FIELD);
@@ -42,7 +42,7 @@ private class TopicConstantsTest {
         System.assertEquals('Active__c', TopicConstants.TOPIC_ACTIVE_FIELD);
 
         // Test Topic Junction Object constant
-        System.assertEquals('innovations_hub__Topic_Junction__c', TopicConstants.TOPIC_JUNCTION_OBJECT);
+        System.assertEquals('Topic_Junction__c', TopicConstants.TOPIC_JUNCTION_OBJECT);
 
         // Test Topic Junction Fields constants
         System.assertEquals('Id', TopicConstants.TOPIC_JUNCTION_ID_FIELD);

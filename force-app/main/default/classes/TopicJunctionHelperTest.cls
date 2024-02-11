@@ -49,7 +49,7 @@ private class TopicJunctionHelperTest {
         // Create test records for ObjectPermissions
         List<ObjectPermissions> objectPermissions = new List<ObjectPermissions>();
         objectPermissions.add(new ObjectPermissions(
-            SObjectType = 'innovations_hub__Topic__c',
+            SObjectType = 'Topic__c',
             ParentId = permissionSets[0].Id,
             PermissionsCreate = false,
             PermissionsRead = true,
@@ -57,7 +57,7 @@ private class TopicJunctionHelperTest {
             PermissionsDelete = true
         ));
         objectPermissions.add(new ObjectPermissions(
-            SObjectType = 'innovations_hub__Topic_Junction__c',
+            SObjectType = 'Topic_Junction__c',
             ParentId = permissionSets[0].Id,
             PermissionsCreate = false,
             PermissionsRead = true,

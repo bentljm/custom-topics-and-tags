@@ -1,6 +1,6 @@
 trigger TopicJunctionTrigger on Topic_Junction__c (before insert, before update, after insert, after update, before delete, after delete) {
     if (!TriggerControl.skipTrigger) {
-        TriggerHandler handler = new innovations_hub.TopicJunctionTriggerHandler(Trigger.isExecuting, Trigger.size);
+        TriggerHandler handler = new TopicJunctionTriggerHandler(Trigger.isExecuting, Trigger.size);
         switch on Trigger.operationType {
             when BEFORE_INSERT {
                 handler.beforeInsert(Trigger.new); 

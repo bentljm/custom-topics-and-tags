@@ -26,7 +26,7 @@ private class TopicPermissionsUtilityTest {
         // Create test records for ObjectPermissions
         List<ObjectPermissions> objectPermissions = new List<ObjectPermissions>();
         objectPermissions.add(new ObjectPermissions(
-            SObjectType = 'innovations_hub__Topic__c',
+            SObjectType = 'Topic__c',
             ParentId = permissionSets[0].Id,
             PermissionsCreate = false,
             PermissionsRead = true,
@@ -50,7 +50,7 @@ private class TopicPermissionsUtilityTest {
         User testUser = [SELECT Id FROM User WHERE Username = 'testuser@example.com.topic' LIMIT 1];
         System.runAs(testUser) {
             // Retrieve crudPermissionsMap for Test User
-            Map<String, Boolean> crudPermissionsMap = TopicPermissionsUtility.getCrudPermissions('innovations_hub__Topic__c');
+            Map<String, Boolean> crudPermissionsMap = TopicPermissionsUtility.getCrudPermissions('Topic__c');
             // Assert that CRUD permissions are retrieved from the profile
             System.assertEquals(false, crudPermissionsMap.get(TopicConstants.PERMISSION_CREATE));
             System.assertEquals(true, crudPermissionsMap.get(TopicConstants.PERMISSION_READ));
