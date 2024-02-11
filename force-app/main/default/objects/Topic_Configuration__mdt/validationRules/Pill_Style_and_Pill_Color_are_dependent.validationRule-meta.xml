@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pill_Style_and_Pill_Color_are_dependent</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(
+AND(
+NOT(ISBLANK(TEXT(Pill_Color__c))),
+ISBLANK(TEXT(Pill_Style__c))
+),
+AND(
+NOT(ISBLANK(TEXT(Pill_Style__c))),
+ISBLANK(TEXT(Pill_Color__c))
+)
+)</errorConditionFormula>
+    <errorDisplayField>Pill_Style__c</errorDisplayField>
+    <errorMessage>Pill Style and Pill Color are dependent. Both are required when one is set.</errorMessage>
+</ValidationRule>

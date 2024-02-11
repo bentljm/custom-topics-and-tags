@@ -1,0 +1,124 @@
+<template>
+    <!-- Lightning card with dynamic properties -->
+    <lightning-card>
+        <div if:true={componentSpinner}>
+            <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+        </div>
+        <div slot="title">
+            <!-- Dynamic Title with Icon and Topic Count -->
+            <lightning-icon class="slds-var-m-right_small" icon-name={cardIcon} size="small"></lightning-icon>
+            <b>{cardTitle}</b>&nbsp;({topicCount})
+        </div>
+        <div class="slds-var-m-around_small">
+            <!-- Dynamic Help Text -->
+            <div class="slds-var-m-around_x-small">{cardHelpText}</div>
+            <!-- Dynamic Combo Box to select Topic Category and Search Input Box to search and select Topics -->
+            <div class="slds-grid slds-grid_vertical-align-end">
+                <div class="slds-var-m-right_xx-small">
+                    <template if:true={categoryOptions}>
+                        <!-- Combo Box to select Topic Category -->
+                        <lightning-combobox
+                            label="Category"
+                            value={categorySelected}
+                            options={categoryOptions}
+                            onchange={handleCategoryChange}>
+                        </lightning-combobox>
+                    </template>
+                </div>
+                <div class="slds-col slds-var-m-right_xx-small">
+                    <!-- Search Input Box -->
+                    <lightning-input
+                        type="search"
+                        value={value}
+                        autocomplete="off"
+                        label="Topics"
+                        placeholder="Search..."
+                        onblur={hideTopics}
+                        onclick={showTopics}
+                        onchange={handleSearchTopics}>
+                    </lightning-input>
+                    <!-- Dropdown List -->
+                    <template if:true={showDropdown}>
+                        <div class="slds-combobox_container" aria-expanded="true" aria-haspopup="listbox" role="combobox">
+                            <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                                <div class="slds-dropdown slds-dropdown_length-10 slds-dropdown_fluid" role="listbox" aria-label="categoryOptions" tabindex="0" aria-busy="false">
+                                    <div if:true={searchSpinner}><lightning-spinner alternative-text="Loading..." size="x-small"></lightning-spinner></div>
+                                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                        <!-- Records Found -->
+                                        <template if:true={searchedTopics}>
+                                            <template for:each={searchedTopics} for:item="topic" for:index="index">
+                                                <template if:true={topic.sObj}>
+                                                    <li key={topic.sObj.Id} data-key={topic.sObj.Id} class="slds-listbox__item slds-var-m-vertical_xxx-small slds-var-m-horizontal_xx-small" role="presentation" onmousedown={handleAddOrRemoveTopic}>
+                                                        <div class="slds-media slds-media_center slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                            <span class="slds-media__figure slds-listbox__option-icon">
+                                                                <template if:true={topic.isSelected}>
+                                                                    <lightning-icon class="slds-media_center" icon-name='utility:close' size="small"></lightning-icon>     
+                                                                </template>
+                                                                <template if:false={topic.isSelected}>
+                                                                    <lightning-icon class="slds-media_center" icon-name={topic.iconName} size="small"></lightning-icon>     
+                                                                </template>                                               
+                                                            </span>
+                                                            <span class="slds-media__body">
+                                                                <span class="slds-listbox__option-text slds-listbox__option-text_entity slds-truncate">{topic.sObj.Name}</span>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </template>
+                                        </template>
+                                        <!-- No Records Found -->
+                                        <template if:true={message}>
+                                            <li class="slds-listbox__item slds-var-m-vertical_xxx-small slds-var-m-horizontal_xx-small" role="presentation">
+                                                <div class="slds-media slds-media_center slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                                        <lightning-icon class="slds-media_center" icon-name="utility:error" size="small"></lightning-icon>                                                        
+                                                    </span>
+                                                    <span class="slds-media__body">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity slds-truncate">No Records Found</span>
+                                                    </span>
+                                                </div>
+                                            </li>                             
+                                        </template>
+                                        <!-- Create New Topic -->
+                                        <template if:true={createNewTopic}>
+                                            <li class="slds-listbox__item slds-var-m-vertical_xxx-small slds-var-m-horizontal_xx-small" role="presentation" onmousedown={handleCreateNewTopic}>
+                                                <div class="slds-media slds-media_center slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                    <span class="slds-media__figure slds-listbox__option-icon">
+                                                        <lightning-icon class="slds-media_center" icon-name="utility:add" size="small"></lightning-icon>                                                        
+                                                    </span>
+                                                    <span class="slds-media__body">
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity slds-truncate">Create Topic</span>&nbsp;<b>{value}</b>
+                                                    </span>
+                                                </div>
+                                            </li>                                          
+                                        </template>   
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <!-- Button Redirect to All Topics -->
+                <template if:true={readPermission}>
+                    <div><lightning-button variant="neutral" title="Go to Topics" label="Topics" onclick={handleGoToTopics}></lightning-button></div> 
+                </template>
+            </div>
+            <!-- Pill Container to hold Selected Topics -->
+            <div class="slds-var-m-top_small">
+                <template for:each={selectedTopics} for:item="topic" for:index="index">
+                    <lightning-pill
+                        class={topic.class}
+                        data-index={index}
+                        data-key={topic.sObj.Id}
+                        key={topic.sObj.Id}
+                        name={topic.sObj.Name}
+                        label={topic.sObj.Name}
+                        onclick={handleGoToTopic}
+                        onremove={handleRemoveTopicPill}>
+                        <lightning-icon icon-name={topic.iconName} size="x-small"></lightning-icon>
+                    </lightning-pill>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Topic__c</members>
+        <members>Topic_Junction__c</members>
+        <members>Topic_Configuration__mdt</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Topic__c</members>
+        <members>Topic_Junction__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>topicCardComponent</members>
+        <name>LightningComponentBundle</name>
+    </types>
+     <types>
+        <members>Topic_Record_Page</members>
+        <members>Topic_Junction_Record_Page</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Topic__c-Topic Layout</members>
+        <members>Topic_Junction__c-Topic Junction Layout</members>
+         <members>Topic_Configuration__mdt-Topic Configuration Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>PermissionSet</name>
+    </types>
+    
+    <version>58.0</version>
+</Package>

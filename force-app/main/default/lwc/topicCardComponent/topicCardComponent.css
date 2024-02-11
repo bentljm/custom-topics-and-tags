@@ -1,0 +1,147 @@
+/** Generic CSS **/
+.pill {
+    cursor: pointer;
+    padding: 0px 4px 4px 0px;
+}
+/** Outline CSS **/
+.outline {
+    --slds-c-pill-sizing-border: 2px;
+}
+.black-outline {
+    --slds-c-pill-sizing-border: 2px;
+    --slds-c-pill-color-border: black;
+    --slds-c-icon-color-foreground-default: black;
+}
+.light-orange-outline {
+    --slds-c-pill-sizing-border: 2px;
+    --slds-c-pill-color-border: #ffb758;
+    --slds-c-icon-color-foreground-default: #ffb758;
+}
+.orange-outline {
+    --slds-c-pill-sizing-border: 2px;
+    --slds-c-pill-color-border: #f99221;
+    --slds-c-icon-color-foreground-default: #f99221;
+}
+.dark-orange-outline {
+    --slds-c-pill-color-border: #b85d0d;
+    --slds-c-icon-color-foreground-default: #b85d0d;
+}
+.light-yellow-outline {
+    --slds-c-pill-color-border: #ffe654;
+    --slds-c-icon-color-foreground-default: #ffe654;
+}
+.yellow-outline {
+    --slds-c-pill-color-border: #f5bc25;
+    --slds-c-icon-color-foreground-default: #f5bc25;
+}
+.dark-yellow-outline {
+    --slds-c-pill-color-border: #b67e11;
+    --slds-c-icon-color-foreground-default: #b67e11;
+}
+.light-green-outline {
+    --slds-c-pill-color-border: #3be282;
+    --slds-c-icon-color-foreground-default: #3be282;
+}
+.green-outline {
+    --slds-c-pill-color-border: #3cba4c;
+    --slds-c-icon-color-foreground-default: #3cba4c;
+}
+.dark-green-outline {
+    --slds-c-pill-color-border: #0b7477;
+    --slds-c-icon-color-foreground-default: #0b7477;
+}
+.light-blue-outline {
+    --slds-c-pill-color-border: #5ebbff;
+    --slds-c-icon-color-foreground-default: #5ebbff;
+}
+.blue-outline {
+    --slds-c-pill-color-border: #5779c1;
+    --slds-c-icon-color-foreground-default: #5779c1;
+}
+.dark-blue-outline {
+    --slds-c-pill-color-border: #001970;
+    --slds-c-icon-color-foreground-default: #001970;
+}
+.light-purple-outline {
+    --slds-c-pill-color-border: #d073e0;
+    --slds-c-icon-color-foreground-default: #d073e0;
+}
+.purple-outline {
+    --slds-c-pill-color-border: #bd35bd;
+    --slds-c-icon-color-foreground-default: #bd35bd;
+}
+.dark-purple-outline {
+    --slds-c-pill-color-border: #580d8c;
+    --slds-c-icon-color-foreground-default: #580d8c;
+}
+/** Fill CSS **/
+.fill {
+    color: white;
+    --slds-c-pill-sizing-border: 2px;
+    --slds-c-icon-color-foreground: white;
+    --slds-c-icon-color-foreground-default: white;
+}
+.black-fill {
+    --slds-c-pill-color-border: black;
+    --slds-c-pill-color-background: black; 
+}
+.light-orange-fill {
+    --slds-c-pill-color-border: #ffb758;
+    --slds-c-pill-color-background: #ffb758; 
+}
+.orange-fill {
+    --slds-c-pill-color-border: #f99221;
+    --slds-c-pill-color-background: #f99221; 
+}
+.dark-orange-fill {
+    --slds-c-pill-color-border: #b85d0d;
+    --slds-c-pill-color-background: #b85d0d; 
+}
+.light-yellow-fill {
+    --slds-c-pill-color-border: #ffe654;
+    --slds-c-pill-color-background: #ffe654; 
+}
+.yellow-fill {
+    --slds-c-pill-color-border: #f5bc25;
+    --slds-c-pill-color-background: #f5bc25; 
+}
+.dark-yellow-fill {
+    --slds-c-pill-color-border: #b67e11;
+    --slds-c-pill-color-background: #b67e11; 
+}
+.light-green-fill {
+    --slds-c-pill-color-border: #3be282;
+    --slds-c-pill-color-background: #3be282; 
+}
+.green-fill {
+    --slds-c-pill-color-border: #3cba4c;
+    --slds-c-pill-color-background: #3cba4c; 
+}
+.dark-green-fill {
+    --slds-c-pill-color-border: #0b7477;
+    --slds-c-pill-color-background: #0b7477; 
+}
+.light-blue-fill {
+    --slds-c-pill-color-border: #5ebbff;
+    --slds-c-pill-color-background: #5ebbff; 
+}
+.blue-fill {
+    --slds-c-pill-color-border: #5779c1;
+    --slds-c-pill-color-background: #5779c1; 
+}
+.dark-blue-fill {
+    --slds-c-pill-color-border: #001970;
+    --slds-c-pill-color-background: #001970; 
+}
+.light-purple-fill {
+    --slds-c-pill-color-border: #d073e0;
+    --slds-c-pill-color-background: #d073e0; 
+}
+.purple-fill {
+    --slds-c-pill-color-border: #bd35bd;
+    --slds-c-pill-color-background: #bd35bd; 
+}
+.dark-purple-fill {
+    --slds-c-pill-color-border: #580d8c;
+    --slds-c-pill-color-background: #580d8c; 
+}
