@@ -2,10 +2,9 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "package": "TopicsApp",
+      "package": "TopicsAppUnmanaged",
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
-      "default": false,
       "versionDescription": ""
     }
   ],
