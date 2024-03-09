@@ -37,7 +37,7 @@ private class TopicPicklistUtilityTest {
         TopicPicklistUtility.setTopicCategories(new Set<String>{'Category1'});
         // Retrieve test records
         Set<Topic_Junction__c> records = new Set<Topic_Junction__c>();
-        List<Topic_Junction__c> topicJunctions = [SELECT Id, Record_Id__c, Object_Field__c FROM Topic_Junction__c];
+        List<Topic_Junction__c> topicJunctions = [SELECT Id, Record_Id__c, Object_Field__c, Object_Type__c FROM Topic_Junction__c];
         for (Topic_Junction__c topicJunction : topicJunctions) {
             records.add(topicJunction);
         }
