@@ -36,16 +36,27 @@ public class TopicPicklistUtility {
      * Method to update multi-select picklist on the object based on changes in related Topics.
      * @param sObjectIds Set of sObject Ids of new Topic Junction records.
      */
-    public static void updatePicklistValues(Set<Id> sObjectIds) {
-        // Parameters to store information for processing in bulk 
+    public static void updatePicklistValues(Set<Topic_Junction__c> sObjects) {
+        // Parameters to store information for processing in bulk
+        Set<Id> sObjectIds = new Set<Id>();
         Map<Id, SObject> sObjectsToUpdate = new Map<Id, SObject>();    
         List<Topic_Junction__c> validTopicJunctions = new List<Topic_Junction__c>();  
         Map<Id, Map<String, List<String>>> sObjectIdToFieldToTopicNamesMap = new Map<Id, Map<String, List<String>>>();
 
         // Initialize the map for each recordId
-        for (Id recordId : sObjectIds) {
+        for (Topic_Junction__c topicJunction : sObjects) {
+            String recordId = topicJunction.Record_Id__c;
+            String objectField = topicJunction.Object_Field__c;
+            validTopicJunctions.add(topicJunction);
+            sObjectIds.add(recordId);
             if (!sObjectIdToFieldToTopicNamesMap.containsKey(recordId)) {
-                sObjectIdToFieldToTopicNamesMap.put(recordId, new Map<String, List<String>>());
+                sObjectIdToFieldToTopicNamesMap.put(recordId, new Map<String, List<String>>{objectField => new List<String>()});
+            } else {
+                Map<String, List<String>> fieldToTopicNamesMap = sObjectIdToFieldToTopicNamesMap.get(recordId);
+                if (!fieldToTopicNamesMap.containsKey(objectField)) {
+                    fieldToTopicNamesMap.put(objectField, new List<String>());
+                    sObjectIdToFieldToTopicNamesMap.put(recordId, fieldToTopicNamesMap);
+                }
             }
         }
         // Get Topic Categories from configuration metadata
@@ -55,7 +66,6 @@ public class TopicPicklistUtility {
             String recordId = topicJunction.Record_Id__c;
             String topicName = topicJunction.Topic__r.Name;
             String objectField = topicJunction.Object_Field__c;
-            validTopicJunctions.add(topicJunction);
 
             if (sObjectIdToFieldToTopicNamesMap.containsKey(recordId) && objectField != null) {
                 Map<String, List<String>> fieldToTopicNamesMap = sObjectIdToFieldToTopicNamesMap.get(recordId);
