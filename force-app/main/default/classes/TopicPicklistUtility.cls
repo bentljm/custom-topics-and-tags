@@ -50,8 +50,7 @@ public class TopicPicklistUtility {
             validTopicJunctions.add(topicJunction);
             sObjectIds.add(recordId);
             if (!sObjectIdToFieldToTopicNamesMap.containsKey(recordId)) {
-                Map<String, List<String>> fieldToTopicNamesMap = new Map<String, List<String>>{objectField => new List<String>()};
-                sObjectIdToFieldToTopicNamesMap.put(recordId, fieldToTopicNamesMap);
+                sObjectIdToFieldToTopicNamesMap.put(recordId, new Map<String, List<String>>{objectField => new List<String>()});
             } else {
                 Map<String, List<String>> fieldToTopicNamesMap = sObjectIdToFieldToTopicNamesMap.get(recordId);
                 if (!fieldToTopicNamesMap.containsKey(objectField)) {
