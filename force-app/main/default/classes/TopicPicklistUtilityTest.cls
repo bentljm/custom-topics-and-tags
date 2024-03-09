@@ -36,15 +36,15 @@ private class TopicPicklistUtilityTest {
         // Set topic categories
         TopicPicklistUtility.setTopicCategories(new Set<String>{'Category1'});
         // Retrieve test records
-        Set<Id> recordIds = new Set<Id>();
+        Set<Topic_Junction__c> records = new Set<Topic_Junction__c>();
         List<Topic_Junction__c> topicJunctions = [SELECT Id, Record_Id__c FROM Topic_Junction__c];
         for (Topic_Junction__c topicJunction : topicJunctions) {
-            recordIds.add(topicJunction.Record_Id__c);
+            records.add(topicJunction);
         }
 
         // Call the method under test
         Test.startTest();
-        TopicPicklistUtility.updatePicklistValues(recordIds);
+        TopicPicklistUtility.updatePicklistValues(records);
         Test.stopTest();
 
         System.assertEquals(true, TopicPicklistUtility.testRunSuccessful, 'Test Run was successful');
