@@ -64,15 +64,15 @@ public with sharing class TopicJunctionHelper {
      * @param topicJunctions List of Topic Junction records.
      */
     public void updatePicklistValues(List<Topic_Junction__c> topicJunctions) {
-        // Get valid sObjectIds fpr processing in bulk
-        Set<Id> sObjectIds = getValidSObjectIds(topicJunctions);
+        // Get valid sObjects fpr processing in bulk
+        Set<Topic_Junction__c> sObjects = getValidSObjects(topicJunctions);
         // call future method to add values to picklist fields
-        if (!sObjectIds.isEmpty() && !Test.isRunningTest()) {
-            TopicPicklistUtility.updatePicklistValues(sObjectIds);
+        if (!sObjects.isEmpty() && !Test.isRunningTest()) {
+            TopicPicklistUtility.updatePicklistValues(sObjects);
         } else {
             testRunSuccessful = true;
         }
-    } 
+    }
     
     /**
      * Method to activate multi-select picklist values on the object based on changes in Topic Junctions.
@@ -96,6 +96,22 @@ public with sharing class TopicJunctionHelper {
     @future(callout=true)
     private static void activatePicklistValues(Set<Id> sObjectIds) {
         TopicPicklistUtility.activatePicklistValues(sObjectIds);
+    }
+
+    /**
+     * Method to get list of Tag_Junctions from valid Topic Junction records
+     * @param topicJunctions List of Topic Junction records.
+     */
+    public Set<Topic_Junction__c> getValidSObjects(List<Topic_Junction__c> topicJunctions) {
+        // Parameters to store information for processing in bulk
+        Set<Topic_Junction__c> sObjects = new Set<Topic_Junction__c>();
+        // Process topicJunctions and build necessary data structures
+        for (Topic_Junction__c topicJunction : topicJunctions) {
+            if (topicJunction.Object_Field__c != null) {
+                sObjects.add(topicJunction);
+            }
+        }
+        return sObjects;
     }
     
     /**
