@@ -1,56 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Object_Visibility__c</fullName>
-    <deprecated>false</deprecated>
     <externalId>false</externalId>
     <fieldManageability>SubscriberControlled</fieldManageability>
     <label>Object Visibility</label>
+    <length>255</length>
     <required>true</required>
-    <type>Picklist</type>
-    <valueSet>
-        <restricted>false</restricted>
-        <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Account</fullName>
-                <default>false</default>
-                <label>Account</label>
-            </value>
-            <value>
-                <fullName>Opportunity</fullName>
-                <default>false</default>
-                <label>Opportunity</label>
-            </value>
-            <value>
-                <fullName>Contact</fullName>
-                <default>false</default>
-                <label>Contact</label>
-            </value>
-            <value>
-                <fullName>User</fullName>
-                <default>false</default>
-                <label>User</label>
-            </value>
-            <value>
-                <fullName>Case</fullName>
-                <default>false</default>
-                <label>Case</label>
-            </value>
-            <value>
-                <fullName>Lead</fullName>
-                <default>false</default>
-                <label>Lead</label>
-            </value>
-            <value>
-                <fullName>Task</fullName>
-                <default>false</default>
-                <label>Task</label>
-            </value>
-            <value>
-                <fullName>Event</fullName>
-                <default>false</default>
-                <label>Event</label>
-            </value>
-        </valueSetDefinition>
-    </valueSet>
+    <type>Text</type>
+    <unique>false</unique>
 </CustomField>
