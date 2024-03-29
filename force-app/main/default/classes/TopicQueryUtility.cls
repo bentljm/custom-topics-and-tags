@@ -1,4 +1,4 @@
-public with sharing class TopicQueryUtility {
+public with sharing class TopicQueryUtility { 
 
     /**
      * Method to retrieve all Topic Configurations from Topic_Configuration__mdt.
@@ -8,8 +8,11 @@ public with sharing class TopicQueryUtility {
         List<Topic_Configuration__mdt> topicConfigurations = new List<Topic_Configuration__mdt>();
         try {
             topicConfigurations = [
-                SELECT Label, Category__c, Object_Visibility__c, Object_Field__c, Icon_Name__c, Pill_Color__c, Pill_Style__c
+                SELECT Label, Category__c, Object_Visibility_dep__c, Object_Field__c, Icon_Name__c, Pill_Color__c, Pill_Style__c
                 FROM Topic_Configuration__mdt
+                WHERE Category__c != null 
+                AND Object_Visibility_dep__c != null
+                WITH SECURITY_ENFORCED
             ];
         } catch (Exception e) {
             // Handle exception (e.g., log or rethrow)
@@ -30,10 +33,11 @@ public with sharing class TopicQueryUtility {
         List<String> categories = topicCategories.split(',');
         try {
             topicConfigurations = [
-                SELECT Label, Category__c, Object_Visibility__c, Object_Field__c, Icon_Name__c, Pill_Color__c, Pill_Style__c
+                SELECT Label, Category__c, Object_Visibility_dep__c, Object_Field__c, Icon_Name__c, Pill_Color__c, Pill_Style__c
                 FROM Topic_Configuration__mdt
                 WHERE Category__c IN :categories 
-                AND Object_Visibility__c = :objectApiName
+                AND Object_Visibility_dep__c = :objectApiName
+                WITH SECURITY_ENFORCED
             ];
         } catch (Exception e) {
             // Handle exception (e.g., log or rethrow)
@@ -54,6 +58,7 @@ public with sharing class TopicQueryUtility {
                 SELECT Id, Name, Category__c, Start_Date__c, End_Date__c
                 FROM Topic__c
                 WHERE Id IN :topicIds
+                WITH SECURITY_ENFORCED
             ];
         } catch (Exception e) {
             // Handle exception (e.g., log or rethrow)
@@ -75,7 +80,8 @@ public with sharing class TopicQueryUtility {
                 SELECT Id, Name, Category__c, Start_Date__c, End_Date__c
                 FROM Topic__c
                 WHERE Id NOT IN :topicIdsToExclude 
-                AND Name IN :topicNames];
+                AND Name IN :topicNames
+                WITH SECURITY_ENFORCED];
         } catch (Exception e) {
             // Handle exception (e.g., log or rethrow)
             throw new TopicQueryUtilityException('TopicQueryUtility: Failed to get Topics by Name: ' + e.getMessage());
@@ -101,6 +107,7 @@ public with sharing class TopicQueryUtility {
                 FROM Topic_Junction__c
                 WHERE Topic__r.Category__c IN :categories
                     AND Topic_Junction_Id__c LIKE :uniqueIdentifier
+                WITH SECURITY_ENFORCED
                 ORDER BY Topic__r.Category__c, Topic__r.Name];
         } catch (Exception e) {
             // Handle exception (e.g., log or rethrow)
@@ -130,10 +137,11 @@ public with sharing class TopicQueryUtility {
         try {
             topicsRelatedToRecord = [
                 SELECT Id, Name, Topic_Junction_Id__c, Record_Id__c, Record_Name__c, Object_Type__c, Object_Field__c,
-                    Topic__c, Topic__r.Name, Topic__r.Active__c, Topic__r.Category__c
+                    Topic__c, Topic__r.Name, Topic__r.Active__c, Topic__r.Category__c, isDeleted
                 FROM Topic_Junction__c
                 WHERE Record_Id__c IN :recordIds
                     AND Topic__r.Category__c IN :topicCategories
+                WITH SECURITY_ENFORCED
                 ORDER BY Name DESC];
         } catch (Exception e) {
             // Handle exception (e.g., log or rethrow)
@@ -164,6 +172,7 @@ public with sharing class TopicQueryUtility {
                 WHERE Topic__r.Active__c = true
                     AND CreatedById = :runningUserId
                     AND Topic__r.Category__c IN :categories
+                WITH SECURITY_ENFORCED
                 GROUP BY Topic__c, Topic__r.Name, Topic__r.Category__c
                 HAVING COUNT(Id) > 0
                 ORDER BY Topic__r.Category__c
