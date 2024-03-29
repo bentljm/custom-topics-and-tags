@@ -8,10 +8,10 @@ public with sharing class TopicQueryUtility {
         List<Topic_Configuration__mdt> topicConfigurations = new List<Topic_Configuration__mdt>();
         try {
             topicConfigurations = [
-                SELECT Label, Category__c, Object_Visibility_New__c, Object_Field__c, Icon_Name__c, Pill_Color__c, Pill_Style__c
+                SELECT Label, Category__c, Object_Visibility_Custom__c, Object_Field__c, Icon_Name__c, Pill_Color__c, Pill_Style__c
                 FROM Topic_Configuration__mdt
                 WHERE Category__c != null 
-                AND Object_Visibility_New__c != null
+                AND Object_Visibility_Custom__c != null
             ];
         } catch (Exception e) {
             // Handle exception (e.g., log or rethrow)
@@ -32,10 +32,10 @@ public with sharing class TopicQueryUtility {
         List<String> categories = topicCategories.split(',');
         try {
             topicConfigurations = [
-                SELECT Label, Category__c, Object_Visibility_New__c, Object_Field__c, Icon_Name__c, Pill_Color__c, Pill_Style__c
+                SELECT Label, Category__c, Object_Visibility_Custom__c, Object_Field__c, Icon_Name__c, Pill_Color__c, Pill_Style__c
                 FROM Topic_Configuration__mdt
                 WHERE Category__c IN :categories 
-                AND Object_Visibility_New__c = :objectApiName
+                AND Object_Visibility_Custom__c = :objectApiName
             ];
         } catch (Exception e) {
             // Handle exception (e.g., log or rethrow)

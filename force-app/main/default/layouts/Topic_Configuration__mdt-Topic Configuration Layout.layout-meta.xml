@@ -20,7 +20,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Object_Visibility_New__c</field>
+                <field>Object_Visibility_Custom__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
