@@ -11,7 +11,7 @@ public with sharing class TopicIconUtility {
         // Populate the configuration map using getTopicConfigurations method
         List<Topic_Configuration__mdt> allTopicConfigurations = TopicQueryUtility.getTopicConfigurations();
         for (Topic_Configuration__mdt config : allTopicConfigurations) {
-            String key = config.Object_Visibility_dep__c + config.Category__c;
+            String key = config.Object_Access__c + config.Category__c;
             objectTypeAndCategoryToConfigurationMap.put(key, config);
         }
     }

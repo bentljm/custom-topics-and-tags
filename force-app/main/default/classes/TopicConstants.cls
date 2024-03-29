@@ -24,7 +24,7 @@ public class TopicConstants {
     // Topic Configuration Fields
     public static final String TOPIC_CONFIG_LABEL_FIELD = 'Label';
     public static final String TOPIC_CONFIG_CATEGORY_FIELD = 'Category__c';
-    public static final String TOPIC_CONFIG_OBJECT_VISIBILITY_FIELD = 'Object_Visibility_dep__c';
+    public static final String TOPIC_CONFIG_OBJECT_VISIBILITY_FIELD = 'Object_Access__c';
     public static final String TOPIC_CONFIG_OBJECT_FIELD_FIELD = 'Object_Field__c';
     public static final String TOPIC_CONFIG_ICON_NAME_FIELD = 'Icon_Name__c';
 

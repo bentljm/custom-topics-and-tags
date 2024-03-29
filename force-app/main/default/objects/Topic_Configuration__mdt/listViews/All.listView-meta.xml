@@ -4,7 +4,7 @@
     <columns>MasterLabel</columns>
     <columns>DeveloperName</columns>
     <columns>Category__c</columns>
-    <columns>Object_Visibility_dep__c</columns>
+    <columns>Object_Access__c</columns>
     <columns>Object_Field__c</columns>
     <columns>Icon_Name__c</columns>
     <columns>Pill_Color__c</columns>
