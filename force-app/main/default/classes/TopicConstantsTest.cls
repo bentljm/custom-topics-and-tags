@@ -25,7 +25,7 @@ private class TopicConstantsTest {
         // Test Topic Configuration Fields constants
         System.assertEquals('Label', TopicConstants.TOPIC_CONFIG_LABEL_FIELD);
         System.assertEquals('Category__c', TopicConstants.TOPIC_CONFIG_CATEGORY_FIELD);
-        System.assertEquals('Object_Access__c', TopicConstants.TOPIC_CONFIG_OBJECT_VISIBILITY_FIELD);
+        System.assertEquals('Object_Visibility_Custom__c', TopicConstants.TOPIC_CONFIG_OBJECT_VISIBILITY_FIELD);
         System.assertEquals('Object_Field__c', TopicConstants.TOPIC_CONFIG_OBJECT_FIELD_FIELD);
         System.assertEquals('Icon_Name__c', TopicConstants.TOPIC_CONFIG_ICON_NAME_FIELD);
 
