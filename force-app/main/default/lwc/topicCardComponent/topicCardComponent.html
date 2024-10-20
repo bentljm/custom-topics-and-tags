@@ -50,11 +50,14 @@
                                                 <template if:true={topic.sObj}>
                                                     <li key={topic.sObj.Id} data-key={topic.sObj.Id} class="slds-listbox__item slds-var-m-vertical_xxx-small slds-var-m-horizontal_xx-small" role="presentation" onmousedown={handleAddOrRemoveTopic}>
                                                         <div class="slds-media slds-media_center slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
-                                                            <template if:true={topic.isSelected}>
-                                                                <span class="slds-media__figure slds-listbox__option-icon">
-                                                                    <lightning-icon class="slds-media_center" icon-name='utility:close' size="small"></lightning-icon>
-                                                                </span>    
-                                                            </template>                                               
+                                                            <span class="slds-media__figure slds-listbox__option-icon">
+                                                                <template if:true={topic.isSelected}>
+                                                                    <lightning-icon class="slds-media_center" icon-name='utility:close' size="small"></lightning-icon>     
+                                                                </template>
+                                                                <template if:false={topic.isSelected}>
+                                                                    <lightning-icon class="slds-media_center" icon-name={topic.iconName} size="small"></lightning-icon>     
+                                                                </template>                                               
+                                                            </span>
                                                             <span class="slds-media__body">
                                                                 <span class="slds-listbox__option-text slds-listbox__option-text_entity slds-truncate">{topic.sObj.Name}</span>
                                                             </span>
@@ -112,6 +115,7 @@
                         label={topic.sObj.Name}
                         onclick={handleGoToTopic}
                         onremove={handleRemoveTopicPill}>
+                        <lightning-icon icon-name={topic.iconName} size="x-small"></lightning-icon>
                     </lightning-pill>
                 </template>
             </div>
