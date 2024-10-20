@@ -159,7 +159,7 @@ export default class TopicCardComponent extends NavigationMixin(LightningElement
         this.selectedTopics = allData.reduce((result, row) => {
             console.log(JSON.stringify(row));
             row.sObj.Name = row.sObj.innovations_hub__Topic__r.Name;
-            row.class = this.getPillClass(row.sObj?.innovations_hub__Topic__r?.innovations_hub__Category__c);
+            row.class = 'pill';
             result.push({...row});
             return result;
         }, []);

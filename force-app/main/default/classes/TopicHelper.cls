@@ -352,8 +352,7 @@ public with sharing class TopicHelper {
         // Assuming you have a method or constructor to create a Topic from an SObject
         return new Topic(
             sObj,
-            generateRecordPageUrl(sObjId),
-            TopicIconUtility.getSObjectIcon(sObjId, sObjType, sObjCategory));
+            generateRecordPageUrl(sObjId));
     }
 
     /**
@@ -375,18 +374,15 @@ public with sharing class TopicHelper {
 
         public SObject sObj { get; set; }
         public String href { get; set; }
-        public String iconName { get; set; }
     
         /**
          * Constructor to initialize Topic properties.
          * @param sObj The SObject associated with the topic.
          * @param href The hyperlink associated with the topic.
-         * @param iconName The name of the icon associated with the topic.
          */
-        public Topic(SObject sObj, String href, String iconName) {
+        public Topic(SObject sObj, String href) {
             this.sObj = sObj;
             this.href = href;
-            this.iconName = iconName;
         }
     }
     

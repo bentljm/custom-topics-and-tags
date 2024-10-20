@@ -242,8 +242,5 @@ private class TopicHelperTest {
         // Assert that href is correct
         String expectedHref = TopicHelper.generateRecordPageUrl(testAccount.Id);
         System.assertEquals(expectedHref, testTopic.href, 'Href property should be set correctly');
-        // Assert that iconName is correct
-        String expectedIconName = TopicIconUtility.getSObjectIcon(testAccount.Id, 'Account', 'Category1');
-        System.assertEquals(expectedIconName, testTopic.iconName, 'IconName property should be set correctly');
     }
 }

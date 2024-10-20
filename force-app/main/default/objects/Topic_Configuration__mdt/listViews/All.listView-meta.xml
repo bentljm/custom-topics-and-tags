@@ -6,9 +6,6 @@
     <columns>Category__c</columns>
     <columns>Object_Visibility_Custom__c</columns>
     <columns>Object_Field__c</columns>
-    <columns>Icon_Name__c</columns>
-    <columns>Pill_Color__c</columns>
-    <columns>Pill_Style__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>
