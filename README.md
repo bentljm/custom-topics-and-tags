@@ -83,7 +83,8 @@ test@salesforceinnovationshub.com
 GoTopics@@12
 
 Package URL:
-Managed Package
+
+Managed Package:
 https://login.salesforce.com/packaging/installPackage.apexp?p0=04tHo000000C9WrIAK
 
 Unmanaged Package:
