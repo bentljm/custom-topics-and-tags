@@ -82,7 +82,7 @@ Test Org (Old):
 test@salesforceinnovationshub.com
 GoTopics@@12
 
-Package URL:
+Package URLs
 
 Managed Package:
 https://login.salesforce.com/packaging/installPackage.apexp?p0=04tHo000000C9WrIAK
