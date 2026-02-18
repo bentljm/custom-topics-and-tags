@@ -4,8 +4,8 @@ Customizable tagging solution to track Topics across Objects in Salesfoce. Built
 
 ## Branches
 
-- **[MANAGED](../../tree/MANAGED)** — Managed package version
-- **[UNMANAGED](../../tree/UNMANAGED)** — Unlocked/customizable version
+- **[MANAGED](../../tree/MANAGED)** — Package version with namespace
+- **[UNMANAGED](../../tree/UNMANAGED)** — Package version without namespace and fewer features
 
 ## Documentation
 
