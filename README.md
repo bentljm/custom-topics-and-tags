@@ -1,6 +1,6 @@
 # Custom Topics and Tags
 
-A Salesforce application for managing topics by Salesforce Innovations Hub, LLC.
+Customizable tagging solution to track Topics across Objects in Salesfoce. Built by by Salesforce Innovations Hub, LLC.
 
 ## Branches
 
