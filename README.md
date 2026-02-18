@@ -1,6 +1,6 @@
-# TopicsApp
+# Custom Topics and Tags
 
-A Salesforce application for managing topics by Innovations Hub, LLC.
+A Salesforce application for managing topics by Salesforce Innovations Hub, LLC.
 
 ## Branches
 
@@ -9,4 +9,4 @@ A Salesforce application for managing topics by Innovations Hub, LLC.
 
 ## Documentation
 
-- [Customization Guide](Customization%20Guide.docx)
+- [Customization Guide](Customization%20Guide.pdf)
